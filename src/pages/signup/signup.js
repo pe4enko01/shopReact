@@ -1,5 +1,5 @@
 import React from 'react';
-import SignIn from '../../components/singin/singin'
+import SignIn from '../../components/singin/singin';
 import "./signup.scss";
 
 const SingInAndSignUpPage = () => {
