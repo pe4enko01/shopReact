@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MenuItem from '../menu-item/menu-item.js';
-import {withRouter} from 'react-router-dom';
+//import {withRouter} from 'react-router-dom';
 import './directory.scss'
 
 
