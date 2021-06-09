@@ -2,6 +2,7 @@ import React from 'react';
 import './singin.scss';
 import FormInput from '../../components/forminput/forminput';
 import Button from '../button/button';
+import {singInWithGoogle} from '../../fierbase/fierbase.utils'
 
 class SignIn extends React.Component {
     constructor(props){
@@ -37,6 +38,7 @@ class SignIn extends React.Component {
                     <FormInput placeholder="password" name="password" type = "password" value={this.state.password} handleChange={this.handleChange} label="password" required />
                    
                     <Button type="summit">Sign in</Button>
+                    <Button onClick={singInWithGoogle}>Sign in with Google</Button>
                 </form>
             </div>
         )
