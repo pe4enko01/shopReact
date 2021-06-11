@@ -5,19 +5,45 @@ import './App.css';
 import HomePage from '../src/pages/homepage'
 import ShopPage from '../src/pages/shop/shop'
 import Header from '../src/components/header/header';
+import {auth} from './fierbase/fierbase.utils';
 import SingInAndSignUpPage from '../src/pages/signup/signup';
 
-function App() {
-  return (
-    <div>
-      <Header/>
-      <Switch>
-        <Route exact path="/" component = {HomePage} />
-        <Route exact path="/shop" component = {ShopPage} />
-        <Route exact path="/signin" component = {SingInAndSignUpPage} />
-      </Switch>
-    </div>
-  );
+class App extends React.Component {
+  constructor(){
+    super();
+
+
+    this.state = {
+      currentUser:null
+    }
+  }
+
+  unsubscribeFromAuth = null; 
+  componentDidMount(){
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(user=>{
+      this.setState({currentUser: user});
+
+      console.log(user)
+    })
+  }
+
+  componentWillUnmount(){
+    this.unsubscribeFromAuth();
+  }
+  render(){
+    return (
+      <div>
+        <Header currentUser={this.state.currentUser}/>
+        <Switch>
+          <Route exact path="/" component = {HomePage} />
+          <Route exact path="/shop" component = {ShopPage} />
+          <Route exact path="/signin" component = {SingInAndSignUpPage} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;
+
+
