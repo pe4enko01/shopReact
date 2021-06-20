@@ -2,7 +2,7 @@ import React from 'react';
 import './singin.scss';
 import FormInput from '../../components/forminput/forminput';
 import Button from '../button/button';
-import {singInWithGoogle} from '../../fierbase/fierbase.utils'
+import {auth,singInWithGoogle} from '../../fierbase/fierbase.utils'
 
 class SignIn extends React.Component {
     constructor(props){
@@ -15,11 +15,16 @@ class SignIn extends React.Component {
         }
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = async e => {
         e.preventDefault();
+        const {email, password} = this.state;
         this.setState({email:'', password:''})
+        try{
+            await auth.signInWithEmailAndPassword(email, password); 
+        }catch(error){
+            console.error(error);
+        }
     }
-
     handleChange = (e) => {
         const {value, name} = e.target;
 
@@ -37,7 +42,7 @@ class SignIn extends React.Component {
     
                     <FormInput placeholder="password" name="password" type = "password" value={this.state.password} handleChange={this.handleChange} label="password" required />
                    <div className="buttons">
-                    <Button type="summit">Sign in</Button>
+                    <Button type="submit">Sign in</Button>
                     <Button onClick={singInWithGoogle} isGoogleSignIn>Sign in with Google</Button>
                    </div>
                 </form>

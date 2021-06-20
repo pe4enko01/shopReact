@@ -26,14 +26,14 @@ export const createUserProfileDocument = async(userAuth, additionalData) =>{
                 displayName,
                 email,
                 createdAt,
-                //...additionalData
+                ...additionalData
             })
        } catch(error){
             console.log('error creating user', error.message)
        }
 
-       return userRef;
-   }
+    }
+    return userRef;
 } 
 firebase.initializeApp(config);
 
