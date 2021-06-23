@@ -7,7 +7,7 @@ import CardDropdown from '../card-dropdown/card-dropdown';
 import "./header.scss";
 import {ReactComponent as Logo} from '../../ass/crown.svg';
 
-const Header = ({currentUser}) => {
+const Header = ({currentUser, hidden}) => {
     return(
         <div className="header">
             <Link to="/">
@@ -28,14 +28,18 @@ const Header = ({currentUser}) => {
                 }
                 <CardIcon/>
             </div>
+            {
+                hidden ? null :
             <CardDropdown/>
+            }
         </div>
     )
 };
 
 
-const mapStateToProps = state =>({
-    currentUser : state.user.currentUser
+const mapStateToProps = ({user : {currentUser}, cart: {hidden}}) =>({
+    currentUser,
+    hidden
 });
 
 export default connect(mapStateToProps)(Header);
