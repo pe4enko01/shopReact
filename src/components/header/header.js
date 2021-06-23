@@ -2,6 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {auth} from "../../fierbase/fierbase.utils";
 import {connect} from 'react-redux';
+import CardIcon from "../card-icon/card-icon";
+import CardDropdown from '../card-dropdown/card-dropdown';
 import "./header.scss";
 import {ReactComponent as Logo} from '../../ass/crown.svg';
 
@@ -24,7 +26,9 @@ const Header = ({currentUser}) => {
                     :
                     <Link className='option' to='/signin'>SIGN IN</Link>
                 }
+                <CardIcon/>
             </div>
+            <CardDropdown/>
         </div>
     )
 };
