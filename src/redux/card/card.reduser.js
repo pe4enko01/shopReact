@@ -1,4 +1,5 @@
-import CartActionTypes from './card.types'
+import CartActionTypes from './card.types';
+import { addItamToCard } from './card.util'
 
 
 const INITIAL_STATE = {
@@ -16,7 +17,7 @@ const cardReduser = (state = INITIAL_STATE, action) => {
         case CartActionTypes.ADD_ITEM:
             return{
                 ...state,
-                cartItems: [...state.cartItems, action.payload]
+                cartItems: addItamToCard(state.cartItems, action.payload)
             }
 
         default:
