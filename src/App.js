@@ -8,6 +8,8 @@ import {auth, createUserProfileDocument} from './fierbase/fierbase.utils';
 import SingInAndSignUpPage from '../src/pages/signup/signup-in';
 import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selector';
+import { createStructuredSelector } from 'reselect';
 
 
 class App extends React.Component {
@@ -56,8 +58,8 @@ class App extends React.Component {
   }
 };
 
-const mapStateToProps = ({user}) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 const mapDispatchProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
