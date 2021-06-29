@@ -1,9 +1,12 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import './App.css';
+
 import HomePage from '../src/pages/homepage'
 import ShopPage from '../src/pages/shop/shop'
 import Header from '../src/components/header/header';
+import Checkout from './pages/checkout/checkout';
+
 import {auth, createUserProfileDocument} from './fierbase/fierbase.utils';
 import SingInAndSignUpPage from '../src/pages/signup/signup-in';
 import {connect} from 'react-redux';
@@ -45,6 +48,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component = {HomePage} />
           <Route exact path="/shop" component = {ShopPage} />
+          <Route exact path="/checkout" component = {Checkout} />
           <Route exact path="/signin" render={()=>
               this.props.currentUser
                   ?
