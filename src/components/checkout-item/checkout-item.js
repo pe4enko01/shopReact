@@ -5,7 +5,7 @@ import {
   clearItemFromCart,
   addItem,
   removeItem
-} from '../../redux/cart/cart.actions';
+} from '../../redux/card/card.action';
 
 import './checkout-item.scss';
 
@@ -40,7 +40,4 @@ const mapDispatchToProps = dispatch => ({
   removeItem: item => dispatch(removeItem(item))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CheckoutItem);
+export default connect(null, mapDispatchToProps)(CheckoutItem);
