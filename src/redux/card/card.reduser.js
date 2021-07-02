@@ -1,5 +1,5 @@
 import CartActionTypes from './card.types';
-import { addItamToCard } from './card.util'
+import { addItamToCard, removeItemFromCart } from './card.util'
 
 
 const INITIAL_STATE = {
@@ -18,6 +18,16 @@ const cardReduser = (state = INITIAL_STATE, action) => {
             return{
                 ...state,
                 cartItems: addItamToCard(state.cartItems, action.payload)
+            };
+        case CartActionTypes.CLEAR_ITEM_FROM_CARD:
+            return{
+                ...state,
+                cartItems: state.cartItems.filter(cartItem => cartItem.id !== action.payload.id)
+            };
+        case  CartActionTypes.REMOVE_ITEM:
+            return{
+                ...state,
+                cartItems: removeItemFromCart(state.cartItems, action.payload)
             }
 
         default:
